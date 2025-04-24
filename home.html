@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart</title>
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAV bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom px-3 ">
+        <a class="navbar-brand" href="#">
+          <img src="./imgs/flipcart.png" alt="Flipkart Logo">
+        </a>
+      
+        <form class="d-flex ms-3 me-auto search-bar w-50">
+          <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search">
+          <button class="btn btn-light " type="submit">Search</button>
+        </form>
+      
+        <ul class="navbar-nav mb-2 mb-lg-0 w-50 d-flex justify-content-evenly">
+          <li class="nav-item">
+            <a class="nav-link btn bg-white text-primary border border-primary" href="./index.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Become a Seller</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">More</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cart</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <!-- Sub Navigation -->
+    <nav class="sub-nav d-flex justify-content-center">
+    <a class="nav-link" href="./Electronics.html">Mobile</a>
+    <a class="nav-link" href="./TVs_Appliances.html">TVs & Appliances</a>
+    <a class="nav-link" href="./Men.html">Men</a>
+    <a class="nav-link" href="./Women.html">Women</a>
+    <a class="nav-link" href="./Baby_Kids.html">Baby & Kids</a>
+    <a class="nav-link" href="./Home_Furniture.html">Home & Furniture</a>
+    <a class="nav-link" href="./Sports_Books_More.html">Sports, Books & More</a>
+    <a class="nav-link" href="#">Flights</a>
+    <a class="nav-link" href="#">Offer Zone</a>
+    </nav>
+
+
+    <!-- slider     -->
+    <div id="flipkartCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./imgs/banner/1.webp" class="d-block w-100" alt="Banner 1">
+          </div>
+          <div class="carousel-item">
+            <img src="./imgs/banner/2.webp" class="d-block w-100" alt="Banner 2">
+          </div>
+          <div class="carousel-item">
+            <img src="./imgs/banner/3.webp" class="d-block w-100" alt="Banner 3">
+          </div>
+          <div class="carousel-item">
+            <img src="./imgs/banner/4.webp" class="d-block w-100" alt="Banner 4">
+          </div>
+          <div class="carousel-item">
+            <img src="./imgs/banner/5.webp" class="d-block w-100" alt="Banner 5">
+          </div>
+          
+        </div>
+      
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#flipkartCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#flipkartCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      
+        <!-- Carousel indicators -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#flipkartCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#flipkartCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#flipkartCarousel" data-bs-slide-to="2"></button>
+          <button type="button" data-bs-target="#flipkartCarousel" data-bs-slide-to="3"></button>
+          <button type="button" data-bs-target="#flipkartCarousel" data-bs-slide-to="4"></button>
+        </div>
+      </div>
+      
+        <!-- Home page -->
+        <div class="container my-4">
+            <h4 class="mb-3">Best of Electronics</h4>
+            <div class="d-flex overflow-auto gap-3 pb-3">
+          
+              <!-- Product 1 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Best Truewireless H...</div>
+                <div class="text-success small">$ 899</div>
+              </div>
+          
+              <!-- Product 2 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Laptop</div>
+                <div class="text-dark small">From ₹80000</div>
+              </div>
+          
+              <!-- Product 3 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/4.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">DELL Laptop</div>
+                <div class="text-dark small">From ₹4999*</div>
+              </div>
+          
+              <!-- Product 4 -->
+              <div class="text-center">
+                <img src="./imgs/product/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Mobile</div>
+                <div class="text-success small">From ₹9999</div>
+              </div>
+          
+              <!-- Product 5 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/2.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">earbuds</div>
+                <div class="text-dark small">From ₹9999</div>
+              </div>
+          
+              
+          
+            </div>
+          </div>
+
+
+
+
+          <div class="container my-4">
+            <h4 class="mb-3">Best of Electronics</h4>
+            <div class="d-flex overflow-auto gap-3 pb-3">
+          
+              <!-- Product 1 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Best Truewireless H...</div>
+                <div class="text-success small">$ 899</div>
+              </div>
+          
+              <!-- Product 2 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Laptop</div>
+                <div class="text-dark small">From ₹80000</div>
+              </div>
+          
+              <!-- Product 3 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/4.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">DELL Laptop</div>
+                <div class="text-dark small">From ₹4999*</div>
+              </div>
+          
+              <!-- Product 4 -->
+              <div class="text-center">
+                <img src="./imgs/product/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Mobile</div>
+                <div class="text-success small">From ₹9999</div>
+              </div>
+          
+              <!-- Product 5 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/2.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">earbuds</div>
+                <div class="text-dark small">From ₹9999</div>
+              </div>
+          
+              
+          
+            </div>
+          </div>
+
+
+
+          <div class="container my-4">
+            <h4 class="mb-3">Best of Electronics</h4>
+            <div class="d-flex overflow-auto gap-3 pb-3">
+          
+              <!-- Product 1 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Best Truewireless H...</div>
+                <div class="text-success small">$ 899</div>
+              </div>
+          
+              <!-- Product 2 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Laptop</div>
+                <div class="text-dark small">From ₹80000</div>
+              </div>
+          
+              <!-- Product 3 -->
+              <div class="text-center">
+                <img src="./imgs/laptop/4.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">DELL Laptop</div>
+                <div class="text-dark small">From ₹4999*</div>
+              </div>
+          
+              <!-- Product 4 -->
+              <div class="text-center">
+                <img src="./imgs/product/1.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">Mobile</div>
+                <div class="text-success small">From ₹9999</div>
+              </div>
+          
+              <!-- Product 5 -->
+              <div class="text-center">
+                <img src="./imgs/earbuds/2.jpeg" class="img-fluid" alt="product">
+                <div class="fw-bold small">earbuds</div>
+                <div class="text-dark small">From ₹9999</div>
+              </div>
+          
+              
+          
+            </div>
+          </div>
+
+        
+
+          
+
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row text-start">
+            <div class="col-md-2 mb-4">
+              <div class="footer-title">ABOUT</div>
+              <a href="#">Contact Us</a><br>
+              <a href="#">About Us</a><br>
+              <a href="#">Careers</a><br>
+              <a href="#">Flipkart Stories</a>
+            </div>
+            <div class="col-md-2 mb-4">
+              <div class="footer-title">HELP</div>
+              <a href="#">Payments</a><br>
+              <a href="#">Shipping</a><br>
+              <a href="#">Cancellation</a><br>
+              <a href="#">FAQ</a>
+            </div>
+            <div class="col-md-2 mb-4">
+              <div class="footer-title">POLICY</div>
+              <a href="#">Return Policy</a><br>
+              <a href="#">Terms Of Use</a><br>
+              <a href="#">Security</a><br>
+              <a href="#">Privacy</a>
+            </div>
+            <div class="col-md-2 mb-4">
+              <div class="footer-title">SOCIAL</div>
+              <a href="#">Facebook</a><br>
+              <a href="#">Twitter</a><br>
+              <a href="#">YouTube</a>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="footer-title">Mail Us:</div>
+              <div>
+                Flipkart Internet Private Limited,<br>
+                Buildings Alyssa, Begonia &<br>
+                Clove Embassy Tech Village,<br>
+                Outer Ring Road, Devarabeesanahalli Village,<br>
+                Bengaluru, 560103,<br>
+                Karnataka, India
+              </div>
+            </div>
+          </div>
+      
+          <hr>
+      
+          <div class="text-center copyright">
+            © 2007–2025 Flipkart.com
+          </div>
+        </div>
+      </footer>
+
+
+
+   <script src="./index.js"></script> 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
