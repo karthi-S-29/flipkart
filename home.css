@@ -102,4 +102,11 @@ html{
       display: flex;
       flex-direction: column;
     }
+    .carousel-item{
+      height: 150px;
+    }
+    .carousel-item img{
+      height: 150px;
+    }
+
 }
