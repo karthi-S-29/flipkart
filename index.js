@@ -55,7 +55,7 @@ function verify() {
     
   if (otp_verify==currentOtp) {
     alert("✅ Login success");
-    window.location.href = "./home.html";
+    window.location.href = "./Electronics.html";
   }
    else {
     alert("❌ Invalid OTP");
