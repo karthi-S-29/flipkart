@@ -13,16 +13,17 @@ html{
     font-weight: 600;
 }
 
+
 .navbar-brand img {
     height: 50px;
-    color: rgb(240, 249, 255);
+    color: rgb(94, 226, 28);
     
   }
   .search-bar {
     width: 500px;
   }
   .nav-item a{
-    color: rgb(255, 248, 248);
+    color: rgb(28, 54, 156);
   }
   .navbar-custom {
     background-color: #2874f0;
@@ -87,6 +88,7 @@ html{
 /* footer */
 
 .footer {
+  
     background-color: #172337;
     color: #ffffffcc;
     font-size: 14px;

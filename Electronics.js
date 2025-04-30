@@ -1262,6 +1262,7 @@ let Baby_Kids = document.getElementById("Baby_Kids");
 let Home_Furniture = document.getElementById("Home_Furniture");
 let Sports_Books_More = document.getElementById("Sports_Books_More");
 let mainpage=document.querySelector("#mainpage")
+let findme = document.getElementById("findme");
 console.log(mainpage)
 
 // let container=document.querySelector(".container")
@@ -1471,7 +1472,7 @@ function sports_find() {
 
 
 
-let findme = document.getElementById("findme");
+
 function done() {
   tv.innerHTML = "";
   Mobile.innerHTML = "";
@@ -1481,8 +1482,9 @@ function done() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
-  mainpage.style.display = "none";
   comingsoon.innerHTML=""
+  mainpage.style.display = "none";
+  
   
 
   let search_item = document.querySelector(".search_item").value.trim().toLowerCase();
@@ -1492,11 +1494,11 @@ function done() {
     return;
   }
 
-  let searchbox = false;
+  
 
   for (let data of Products) {
-    if (data.brand.toLowerCase() === search_item) {
-      searchbox = true;
+    if  (data.brand.toLowerCase().includes(search_item)) {
+      
       findme.innerHTML += `
         <div class="mobile_box">
           <img src="${data.image}" alt="${data.name}" />
@@ -1508,10 +1510,9 @@ function done() {
     }
   }
 
-  if (!searchbox) {
-    findme.innerHTML = `<div  style='height:73vh;' class='d-flex justify-content-center align-items-center'><p>No results found for brand: <b> ${search_item} </b></p></div>`;
+  
 
-  }
+  
 }
 
 
