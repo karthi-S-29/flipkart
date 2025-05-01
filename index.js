@@ -1,8 +1,5 @@
 var Products = [
-
-
-
-  {
+{
     id: 1,
     name: "Samsung Galaxy S21",
     price: 49999,
@@ -1156,7 +1153,7 @@ var Products = [
     category: "sports"
   },
   {
-    id: 140,
+    id: 1401,
     name: "The Alchemist",
     price: 499,
     image: "./imgs/books/1.jpeg",
@@ -1577,6 +1574,9 @@ function done(event) {
 
 for (let data of Products) {
   if (data && data.brand && data.brand.toLowerCase().includes(search_item)) {
+    console.log(data);
+  console.log(data.brand);
+  console.log(data.brand.toLowerCase());
     found = true;
     findme.innerHTML += `
       <div class="mobile_box">
