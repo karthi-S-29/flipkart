@@ -116,7 +116,25 @@ padding: 20px;
   display: block;
 
 }
+#cardpage{
+  display: none;
+}
+#buypage{
+  display: none;
 
+}
+.cardbtn{
+  position: relative;
+}
+#cardcount{
+  
+  top:0px;
+  position: absolute;
+  font-size: 12px;
+  
+  border-radius: 50%;
+  padding: 5px;
+}
 
 
 

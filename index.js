@@ -1334,10 +1334,166 @@ let Home_Furniture = document.getElementById("Home_Furniture");
 let Sports_Books_More = document.getElementById("Sports_Books_More");
 let mainpage=document.querySelector("#mainpage")
 let findme = document.getElementById("findme");
-console.log(mainpage)
+let add_Card=document.getElementById("add_card");
+let cardpage=document.getElementById("cardpage");
+let buypage=document.getElementById("buypage");
+let buy_product=document.getElementById("buy_product");
 
-// let container=document.querySelector(".container")
-function mobile_find() {
+
+
+function buycard(val){
+  cardpage.style.display = "none";
+  buypage.style.display = "block";
+  tv.innerHTML = "";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "none";
+  mainloginpage.style.display = "none";
+
+  for (let data of Products) {
+    if (data["id"] === val) {
+    buy_product.innerHTML=`
+    <div class="container">
+  <h2 class="mb-4">Checkout</h2>
+  <div class="card mb-4">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img src="${data.image}" class="img-fluid rounded-start" alt="Product">
+        
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">${data.name}</h5>
+          <p class="card-text">Brand: ${data.brand}</p>
+          <p class="card-text"><strong>Price: ${data.price}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Form -->
+
+  <div class="card mb-4 p-3">
+    <h5>Delivery Address</h5>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="buyname" placeholder="Enter your full name">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mobile Number</label>
+        <input type="tel" class="form-control" id="buynumber" placeholder="Enter your phone number">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Address</label>
+        <textarea class="form-control" rows="3" id="buyaddress" placeholder="Enter your address"></textarea>
+      </div>
+    </form>
+  </div>
+
+  <!-- Payment Options -->
+
+  <div class="card mb-4 p-3">
+    <h5>Payment Method</h5>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+      <label class="form-check-label" for="cod">Cash on Delivery</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="paymentMethod" id="upi">
+      <label class="form-check-label" for="upi">UPI</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="paymentMethod" id="card">
+      <label class="form-check-label" for="card">Credit/Debit Card</label>
+    </div>
+  </div>
+
+  <!-- Place Order -->
+  <div class="text-end">
+    <button class="btn btn-success btn-lg" onclick="buy()">Place Order</button>
+  </div>
+</div>
+    `
+  }
+}
+
+}
+
+function buy(){
+  let buyname=document.getElementById("buyname").value.trim()
+let buynumber=document.getElementById("buynumber").value.trim()
+let buyaddress=document.getElementById("buyaddress").value.trim()
+if (buyname === "" || buyaddress === "" || buynumber === "") {
+  alert("❌ Please fill all details before placing the order.");
+} else if(!mobilePattern.test(buynumber)){
+  alert("❌ Please fill crt Mobile number before placing the order.");
+
+} else{
+  alert("✅ Your order was placed successfully!");
+  window.location.href = "./index.html";
+}
+
+  
+}
+
+
+
+let cardcount=document.getElementById("cardcount");
+add_Card.innerHTML = `
+  <h3>Your Cart</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>NO</th>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Brand</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="cartBody">
+    
+    </tbody>
+  </table>
+`;
+let cartBody = document.getElementById("cartBody"); 
+
+
+let add_count=0;
+let cartSet = new Set();
+
+function addcard(val){
+  if (cartSet.has(val)) return; 
+  cartSet.add(val);
+
+for (let data of Products) {
+  if (data["id"] === val) {
+    cardcount.innerHTML = add_count+=1;
+    cardcount.style.backgroundColor="blue"
+    cartBody.innerHTML += `
+      <tr>
+        <td>${add_count}</td>
+        <td><img src="${data.image}" width="50" /></td>
+        <td>${data.name}</td>
+        <td>${data.brand}</td>
+        <td>₹ ${data["price"]} <button class="btn btn-success ms-5" onclick="buycard(${data.id})">Buy</button></td>
+      </tr>
+    `;
+  }
+}
+}
+
+
+function showcard(){
+  cardpage.style.display = "block";
+  buypage.style.display = "none";
   tv.innerHTML = "";
   Mobile.innerHTML = "";
   findme.innerHTML = "";
@@ -1350,17 +1506,42 @@ function mobile_find() {
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   
+
+}
+
+
+
+
+function mobile_find() {
+  tv.innerHTML = "";
+  buypage.style.display = "none";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "none";
+  mainloginpage.style.display = "none";
+  cardpage.style.display = "none";
+  
   // Mobile.innerHTML=`<h3> BEST MOBILES</h3>`
   // console.log("done")
   for (let data of Products) {
     data["category"]
     if (data["category"] === "mobile") {
       Mobile.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p><span>${data.rating}</span> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1381,19 +1562,25 @@ function tv_find() {
   Sports_Books_More.innerHTML = "";
   mainpage.style.display = "none";
   comingsoon.innerHTML=""
+  cardpage.style.display = "none";
   mainloginpage.style.display = "none";
-
   mainpage.style.display="none"
+  buypage.style.display = "none";
+
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "tv") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box " onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1411,19 +1598,25 @@ function men_find() {
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
   mainpage.style.display = "none";
+  cardpage.style.display = "none";
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
+  buypage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "men") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box "  onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1439,20 +1632,26 @@ function women_find() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
+  cardpage.style.display = "none";
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
+  buypage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "women") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box "  onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1468,20 +1667,26 @@ function baby_find() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
+  cardpage.style.display = "none";
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
+  buypage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "baby" || data["category"] === "kids") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box "  onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1498,20 +1703,26 @@ function furniture_find() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
+  cardpage.style.display = "none";
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
+  buypage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "furniture") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box "  onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1527,20 +1738,26 @@ function sports_find() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
+  cardpage.style.display = "none";
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
+  buypage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "sports" || data["category"] === "books") {
       tv.innerHTML += `
-        <div class="mobile_box ">
+        <div class="mobile_box "  onclick="addcard(${data.id})">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
           <p>₹ ${data["price"]}</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
         </div>
       `;
     }
@@ -1564,8 +1781,10 @@ function done(event) {
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
   comingsoon.innerHTML=""
+  cardpage.style.display = "none";
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
+  buypage.style.display = "none";
   
   
 
@@ -1580,11 +1799,15 @@ for (let data of Products) {
   console.log(data.brand.toLowerCase());
     found = true;
     findme.innerHTML += `
-      <div class="mobile_box">
+      <div class="mobile_box"  onclick="addcard(${data.id})">
         <img src="${data.image}" alt="${data.name}" />
         <h5>${data.name}</h5>
         <p>★ | Brand: ${data.brand}</p>
         <p>₹ ${data.price}</p>
+        <div class="d-flex gap-2 mt-2 justify-content-center">
+          <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+          <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>  
       </div>
     `;
   }
@@ -1615,9 +1838,11 @@ function Comingsoon() {
   Women.innerHTML = "";
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
+  cardpage.style.display = "none";
   Sports_Books_More.innerHTML = "";
   mainloginpage.style.display = "none";
   mainpage.style.display = "none";
+  buypage.style.display = "none";
 
   
   comingsoon.innerHTML = `
