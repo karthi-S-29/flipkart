@@ -118,9 +118,15 @@ padding: 20px;
 }
 #cardpage{
   display: none;
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  margin-top: 10px;
+  padding: 20px;
 }
 #buypage{
   display: none;
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  padding: 20px;
+  margin-top: 10px;
 
 }
 .cardbtn{

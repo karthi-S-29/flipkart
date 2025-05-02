@@ -1553,6 +1553,7 @@ function mobile_find() {
 let tv = document.getElementById("tv");
 function tv_find() {
   tv.innerHTML = "";
+  buypage.style.display = "none";
   Mobile.innerHTML = "";
   findme.innerHTML = "";
   Men.innerHTML = "";
@@ -1560,19 +1561,17 @@ function tv_find() {
   Baby_Kids.innerHTML = "";
   Home_Furniture.innerHTML = "";
   Sports_Books_More.innerHTML = "";
-  mainpage.style.display = "none";
   comingsoon.innerHTML=""
-  cardpage.style.display = "none";
+  mainpage.style.display = "none";
   mainloginpage.style.display = "none";
-  mainpage.style.display="none"
-  buypage.style.display = "none";
+  cardpage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
     if (data["category"] === "tv") {
       tv.innerHTML += `
-        <div class="mobile_box " onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1608,7 +1607,7 @@ function men_find() {
     data["category"]
     if (data["category"] === "men") {
       tv.innerHTML += `
-        <div class="mobile_box "  onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1643,7 +1642,7 @@ function women_find() {
     data["category"]
     if (data["category"] === "women") {
       tv.innerHTML += `
-        <div class="mobile_box "  onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1678,7 +1677,7 @@ function baby_find() {
     data["category"]
     if (data["category"] === "baby" || data["category"] === "kids") {
       tv.innerHTML += `
-        <div class="mobile_box "  onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1714,7 +1713,7 @@ function furniture_find() {
     data["category"]
     if (data["category"] === "furniture") {
       tv.innerHTML += `
-        <div class="mobile_box "  onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1749,7 +1748,7 @@ function sports_find() {
     data["category"]
     if (data["category"] === "sports" || data["category"] === "books") {
       tv.innerHTML += `
-        <div class="mobile_box "  onclick="addcard(${data.id})">
+        <div class="mobile_box ">
           <img src="${data.image}" alt="${data.name}" />
           <h5>${data.name}</h5>
           <p> ★ | Brand: ${data.brand}</p>
@@ -1799,7 +1798,7 @@ for (let data of Products) {
   console.log(data.brand.toLowerCase());
     found = true;
     findme.innerHTML += `
-      <div class="mobile_box"  onclick="addcard(${data.id})">
+      <div class="mobile_box">
         <img src="${data.image}" alt="${data.name}" />
         <h5>${data.name}</h5>
         <p>★ | Brand: ${data.brand}</p>
