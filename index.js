@@ -1305,7 +1305,7 @@ function otpresend() {
     currentOtp += Math.floor(Math.random() * 10);
   }
   alert("Your OTP: " + currentOtp); 
-  // return currentOtp
+  
 }
 
 
@@ -1321,6 +1321,7 @@ function verify() {
     alert("❌ Invalid OTP");
   }
 }
+
 
 
 
@@ -1590,7 +1591,7 @@ for (let data of Products) {
 }
 
 if (!found) {
-  console.log("No products matched.");
+  // console.log("No products matched.");
   findme.innerHTML = ` <div style='height:73vh;' class='d-flex flex-column justify-content-center align-items-center text-center'>
   <p>No matching this <b>${search_item}</b> products .</p></div>
   `
