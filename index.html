@@ -77,7 +77,7 @@
 
 
     <!-- login page -->
-     <div  id="mainloginpage">
+    <div id="mainloginpage">
     <div class="container d-flex justify-content-center align-items-center p-3">
       <div class="loginpage w-lg-100">
           <div class="login_img">
@@ -99,7 +99,7 @@
                   <button class="btn text-white bg-warning w-100 opt" onclick="otpgen()">Request OTP</button>
                 </div>
                 <div>
-                  <p class="text-center"><span>New to Flipkart?</span><span> Create an account</span></p>
+                  <p class="text-center"><span>New to Flipkart?</span><span onclick="signuppage()"  style="color: blue; cursor: pointer;"> Create an account</span></p>
                 </div>
           </div>
 
@@ -118,6 +118,49 @@
       </div>
   </div>
 </div>
+
+
+<div id="mainsignuppage">
+  <div class="container d-flex justify-content-center align-items-center p-3">
+    <div class="signuppage w-lg-100">
+      <div class="signup_img">
+        <div>
+          <h2>Sign Up</h2>
+          <p>Join us to access orders, wishlist, and personalized recommendations</p>
+        </div>
+        <div>
+          <img src="./imgs/flipcart.png" alt="signup page img" class="w-75">
+        </div>
+      </div>
+
+      <div class="signup_side">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="signupName" placeholder="Full Name">
+          <label for="signupName">Full Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="signupEmail" placeholder="Email">
+          <label for="signupEmail">Email or Phone</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+          <label for="signupPassword">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm Password">
+          <label for="signupConfirmPassword">Confirm Password</label>
+        </div>
+
+        <button class="btn text-white bg-success w-100" onclick="signup()">Create Account</button>
+        <p class="mt-3 text-center">Already have an account? <span style="color: blue; cursor: pointer;" onclick="mainlogin()">Login</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -167,100 +210,21 @@
       </div>
     </div>
 
+    <div class="homedeal">
+    <h2 class="top-deals-heading">Top Deals</h2>
+    <div class="imgdeal">
+      <img src="./imgs/10-percent_18377925.png" class="off1">
+      <img src="./imgs/20-percent_18377942.png" class="off2">
+      <img src="./imgs/25-percent_6895281.png" class="off3">
+      <img src="./imgs/30-percent_18378121.png" class="off4">
+    </div>
+    <div id="topdeals" class="d-flex flex-wrap gap-5 justify-content-center m-3">
+
+    </div>
+  </div>
 
 
-
-
-      <div class="container my-4">
-          <h4 class="mb-3">Best of Electronics</h4>
-          <div class="d-flex overflow-auto gap-3 pb-3">
-        
-            <!-- Product 1 -->
-            <div class="text-center ">
-              <img src="./imgs/earbuds/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Best Truewireless H...</div>
-              <div class="text-dark small">$ 899</div>
-            </div>
-        
-            <!-- Product 2 -->
-            <div class="text-center">
-              <img src="./imgs/laptop/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Laptop</div>
-              <div class="text-dark small">From ₹80000</div>
-            </div>
-        
-            <!-- Product 3 -->
-            <div class="text-center">
-              <img src="./imgs/laptop/4.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">DELL Laptop</div>
-              <div class="text-dark small">From ₹4999*</div>
-            </div>
-        
-            <!-- Product 4 -->
-            <div class="text-center">
-              <img src="./imgs/product/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Mobile</div>
-              <div class="text-dark small">From ₹9999</div>
-            </div>
-        
-            <!-- Product 5 -->
-            <div class="text-center">
-              <img src="./imgs/earbuds/2.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">earbuds</div>
-              <div class="text-dark small">From ₹9999</div>
-            </div>
-        
-            
-        
-          </div>
-        </div>
-
-
-
-
-        <div class="container my-4">
-          <h4 class="mb-3">Best of Electronics</h4>
-          <div class="d-flex overflow-auto gap-3 pb-3">
-        
-            <!-- Product 1 -->
-            <div class="text-center">
-              <img src="./imgs/earbuds/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Best Truewireless H...</div>
-              <div class="text-dark small">$ 899</div>
-            </div>
-        
-            <!-- Product 2 -->
-            <div class="text-center">
-              <img src="./imgs/laptop/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Laptop</div>
-              <div class="text-dark small">From ₹80000</div>
-            </div>
-        
-            <!-- Product 3 -->
-            <div class="text-center">
-              <img src="./imgs/laptop/4.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">DELL Laptop</div>
-              <div class="text-dark small">From ₹4999*</div>
-            </div>
-        
-            <!-- Product 4 -->
-            <div class="text-center">
-              <img src="./imgs/product/1.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">Mobile</div>
-              <div class="text-dark small">From ₹9999</div>
-            </div>
-        
-            <!-- Product 5 -->
-            <div class="text-center">
-              <img src="./imgs/earbuds/2.jpeg" class="img-fluid" alt="product">
-              <div class="fw-bold small">earbuds</div>
-              <div class="text-dark small">From ₹9999</div>
-            </div>
-        
-            
-        
-          </div>
-        </div>
+      
     </div>
 
       <!-- product page -->

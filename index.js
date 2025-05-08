@@ -6,7 +6,8 @@ var Products = [
     brand: "Samsung",
     image: "./imgs/product/1.jpeg",
     rating: 4.5,
-    category: "mobile"
+    category: "mobile",
+    special:"30%"
   },
   {
     id: 2,
@@ -42,7 +43,8 @@ var Products = [
     brand: "Redmi",
     image: "./imgs/product/5.jpeg",
     rating: 4.4,
-    category: "mobile"
+    category: "mobile",
+    special:"25%"
   },
   {
     id: 6,
@@ -96,7 +98,8 @@ var Products = [
     brand: "iQOO",
     image: "./imgs/product/28.jpeg",
     rating: 4.4,
-    category: "mobile"
+    category: "mobile",
+    special:"30%"
   },
   {
     id: 12,
@@ -375,7 +378,8 @@ var Products = [
     price: 26999,
     image: "./imgs/tv/6.jpeg",
     brand: "Toshiba",
-    category: "tv"
+    category: "tv",
+    special:"25%"
   },
   {
     id: 44,
@@ -439,7 +443,8 @@ var Products = [
     price: 2499,
     image: "./imgs/men/7.jpeg",
     brand: "Nike",
-    category: "men"
+    category: "men",
+    special:"30%"
   },
   {
     id: 52,
@@ -495,7 +500,8 @@ var Products = [
     price: 1899,
     image: "./imgs/men/14.jpeg",
     brand: "Jack & Jones",
-    category: "men"
+    category: "men",
+    special:"25%"
   },
   {
     id: 59,
@@ -567,7 +573,8 @@ var Products = [
     price: 699,
     image: "./imgs/women/7.jpeg",
     brand: "H&M",
-    category: "women"
+    category: "women",
+    special:"10%"
   },
   {
     id: 68,
@@ -678,7 +685,8 @@ var Products = [
     price: 899,
     image: "./imgs/kids/1.jpeg",
     brand: "Pampers",
-    category: "baby"
+    category: "baby",
+    special:"30%"
   },
   {
     id: 82,
@@ -710,7 +718,8 @@ var Products = [
     price: 399,
     image: "./imgs/kids/5.jpeg",
     brand: "Johnson's Baby",
-    category: "baby"
+    category: "baby",
+    special:"25%"
   },
   {
     id: 86,
@@ -790,7 +799,8 @@ var Products = [
     price: 1299,
     image: "./imgs/kids/15.jpeg",
     brand: "Babyhug",
-    category: "baby"
+    category: "baby",
+    special:"10%"
   },
   {
     id: 96,
@@ -886,7 +896,8 @@ var Products = [
     price: 21999,
     image: "./imgs/furniture/7.jpeg",
     brand: "Pepperfry",
-    category: "furniture"
+    category: "furniture",
+    special:"10%"
   },
   {
     id: 108,
@@ -982,7 +993,8 @@ var Products = [
     price: 7999,
     image: "./imgs/furniture/19.jpeg",
     brand: "Ikea",
-    category: "furniture"
+    category: "furniture",
+    special:"10%"
   },
   {
     id: 120,
@@ -1086,7 +1098,8 @@ var Products = [
     price: 2999,
     image: "./imgs/sports/12.jpeg",
     brand: "Nike",
-    category: "sports"
+    category: "sports",
+    special:"10%"
   },
   {
     id: 133,
@@ -1174,7 +1187,8 @@ var Products = [
     price: 599,
     image: "./imgs/books/3.jpeg",
     author: "James Clear",
-    category: "books"
+    category: "books",
+    special:"10%"
   },
   {
     id: 143,
@@ -1242,12 +1256,30 @@ var Products = [
   }
 
 ];
+let users=[{
+  name: "Alice",
+  email_phone: "alice@example.com",
+  password: "alice123"
+},
+{
+  name: "Bob",
+  email_phone: "9876543210",
+  password: "bob12345"
+},
+{
+  name: "Charlie",
+  email_phone: "charlie@example.com",
+  password: "charlie789"
+}];
+
+
 
 
 // longin page
 
 let mainloginpage=document.querySelector("#mainloginpage")
 let otp1=document.querySelector(".otp")
+let mainsignuppage=document.querySelector("#mainsignuppage")
 
 let otperror=document.querySelector(".otperror")
 let login_side=document.querySelector(".login_side")
@@ -1262,23 +1294,35 @@ let currentOtp = "";
 function otpgen(){
     let inpemail_phone=document.querySelector(".inpemail_phone").value
     
-    if (inpemail_phone === "") {
-        otperror.innerHTML = "Please enter email or phone number";
-        otperror.style.color = "red";
-      } else if (emailPattern.test(inpemail_phone) || mobilePattern.test(inpemail_phone)) {
-        otperror.innerHTML ="";
-        otpresend()
-        login_side.style.display="none"
-        otp_side.style.display="flex"
-        verpage.innerHTML=`Please enter the OTP sent to ${inpemail_phone}  <span style="color:blue" onclick="login()">Change</span>`
-        } else {
-        otperror.innerHTML = "Please check email or phone number";
-        otperror.style.color = "red";
-      }
+
+    let found = false;
+
+for (let val of users) {
+  if (inpemail_phone === "") {
+    otperror.innerHTML = "Please enter email or phone number";
+    otperror.style.color = "red";
+    break;
+  } else if (val.email_phone === inpemail_phone) {
+    found = true;
+    otperror.innerHTML = "";
+    otpresend();
+    login_side.style.display = "none";
+    otp_side.style.display = "flex";
+    verpage.innerHTML = `Please enter the OTP sent to ${inpemail_phone} <span style="color:blue; cursor:pointer;" onclick="login()">Change</span>`;
+    break;
+  }
+}
+
+if (!found && inpemail_phone !== "") {
+  otperror.innerHTML = "Please check email or phone number";
+  otperror.style.color = "red";
+}
       
 
 
 }
+
+
 function mainlogin(){
   mainloginpage.style.display = "block";
   tv.innerHTML = "";
@@ -1291,7 +1335,67 @@ function mainlogin(){
   Sports_Books_More.innerHTML = "";
   comingsoon.innerHTML=""
   mainpage.style.display = "none";
+  mainsignuppage.style.display = "none";
 }
+
+
+
+function signup(){
+  let signupName=document.getElementById("signupName").value
+  let signupEmail=document.getElementById("signupEmail").value
+  let signupPassword=document.getElementById("signupPassword").value
+  let signupConfirmPassword=document.getElementById("signupConfirmPassword").value
+
+  if (signupName === ""|| signupEmail === "" || signupPassword === "" || signupConfirmPassword === "") {
+    alert("please check all information")
+  } else if (emailPattern.test(signupEmail) || mobilePattern.test(signupEmail)) {
+     if(signupPassword===signupConfirmPassword){
+
+      const newuser = {
+        name: signupName,
+        email_phone: signupEmail,
+        password: signupConfirmPassword
+      };
+    
+      users.push(newuser);
+
+      alert("✅ signup success");
+      
+      window.location.href = "./index.html";
+      console.log(users);
+      
+
+      document.getElementById("signupName").value = "";
+      document.getElementById("signupEmail").value = "";
+      document.getElementById("signupPassword").value = "";
+     }else{
+      alert("please check password");
+
+     }
+  } 
+
+
+}
+console.log(users);
+
+
+
+function signuppage(){
+  mainloginpage.style.display = "none";
+  mainsignuppage.style.display = "block";
+  tv.innerHTML = "";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "none";
+}
+
+
 function login(){
     
     login_side.style.display="flex"
@@ -1327,6 +1431,7 @@ function verify() {
 
 
 let Mobile = document.getElementById("Mobile");
+let topdeals = document.getElementById("topdeals");
 let Men = document.getElementById("Men");
 let Women = document.getElementById("Women");
 let Baby_Kids = document.getElementById("Baby_Kids");
@@ -1355,6 +1460,7 @@ function buycard(val){
   comingsoon.innerHTML=""
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     if (data["id"] === val) {
@@ -1505,11 +1611,96 @@ function showcard(){
   comingsoon.innerHTML=""
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
+  mainsignuppage.style.display = "none";
   
 
 }
 
+// home page
 
+  
+  
+  for (let data of Products) {
+    
+    if (data["special"] === "10%") {
+      const originalPrice = Number(data["price"]);
+      const discount = 10; 
+      const discountedPrice = originalPrice - (originalPrice * discount / 100);
+    
+      topdeals.innerHTML += `
+        <div class="mobile_box position-relative">
+          <div class="discount-badge">${data["special"]} OFF</div>
+          <img src="${data.image}" alt="${data.name}" />
+          <h5>${data.name}</h5>
+          <p><span>${data.rating}</span> ★ | Brand: ${data.brand}</p>
+          <p><s>₹${originalPrice}</s> <strong>₹${Math.floor(discountedPrice)}</strong> (${data["special"]})</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+            <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+            <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
+    if (data["special"] === "20%") {
+      const originalPrice = Number(data["price"]);
+      const discount = 20; 
+      const discountedPrice = originalPrice - (originalPrice * discount / 100);
+    
+      topdeals.innerHTML += `
+        <div class="mobile_box position-relative">
+          <div class="discount-badge">${data["special"]} OFF</div>
+          <img src="${data.image}" alt="${data.name}" />
+          <h5>${data.name}</h5>
+          <p><span>${data.rating}</span> ★ | Brand: ${data.brand}</p>
+          <p><s>₹${originalPrice}</s> <strong>₹${Math.floor(discountedPrice)}</strong> (${data["special"]})</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+            <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+            <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
+    if (data["special"] === "25%") {
+      const originalPrice = Number(data["price"]);
+      const discount = 25; 
+      const discountedPrice = originalPrice - (originalPrice * discount / 100);
+    
+      topdeals.innerHTML += `
+        <div class="mobile_box position-relative">
+          <div class="discount-badge">${data["special"]} OFF</div>
+          <img src="${data.image}" alt="${data.name}" />
+          <h5>${data.name}</h5>
+          <p><span>${data.rating}</span> ★ | Brand: ${data.brand}</p>
+          <p><s>₹${originalPrice}</s> <strong>₹${Math.floor(discountedPrice)}</strong> (${data["special"]})</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+            <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+            <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
+    if (data["special"] === "30%") {
+      const originalPrice = Number(data["price"]);
+      const discount = 30; 
+      const discountedPrice = originalPrice - (originalPrice * discount / 100);
+    
+      topdeals.innerHTML += `
+        <div class="mobile_box position-relative">
+          <div class="discount-badge">${data["special"]} OFF</div>
+          <img src="${data.image}" alt="${data.name}" />
+          <h5>${data.name}</h5>
+          <p><span>${data.rating}</span> ★ | Brand: ${data.brand}</p>
+          <p><s>₹${originalPrice}</s> <strong>₹${Math.floor(discountedPrice)}</strong> (${data["special"]})</p>
+          <div class="d-flex gap-2 mt-2 justify-content-center">
+            <button class="btn btn-success" onclick="buycard(${data.id})">Buy</button>
+            <button class="btn btn-primary" onclick="addcard(${data.id})">Add to Cart</button>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  
 
 
 function mobile_find() {
@@ -1526,6 +1717,7 @@ function mobile_find() {
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   cardpage.style.display = "none";
+  mainsignuppage.style.display = "none";
   
   // Mobile.innerHTML=`<h3> BEST MOBILES</h3>`
   // console.log("done")
@@ -1565,6 +1757,7 @@ function tv_find() {
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   cardpage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
@@ -1601,6 +1794,7 @@ function men_find() {
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
@@ -1636,6 +1830,7 @@ function women_find() {
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
@@ -1671,6 +1866,7 @@ function baby_find() {
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
@@ -1707,6 +1903,7 @@ function furniture_find() {
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   for (let data of Products) {
     //  console.log(data["category"]);
@@ -1742,7 +1939,7 @@ function sports_find() {
   mainloginpage.style.display = "none";
   comingsoon.innerHTML=""
   buypage.style.display = "none";
-
+  mainsignuppage.style.display = "none";
   for (let data of Products) {
     //  console.log(data["category"]);
     data["category"]
@@ -1784,6 +1981,7 @@ function done(event) {
   mainpage.style.display = "none";
   mainloginpage.style.display = "none";
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
   
   
 
@@ -1842,6 +2040,7 @@ function Comingsoon() {
   mainloginpage.style.display = "none";
   mainpage.style.display = "none";
   buypage.style.display = "none";
+  mainsignuppage.style.display = "none";
 
   
   comingsoon.innerHTML = `

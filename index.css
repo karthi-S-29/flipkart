@@ -54,6 +54,36 @@ html{
 #mainloginpage{
   display: none;
 }
+#mainsignuppage{
+  display: none;
+}
+
+.signuppage{
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  
+  }
+  .signup_img,.signup_side{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100%;
+  }
+  .signup_img{
+    
+  background-color: rgba(0, 0, 255, 0.722);
+  color: white;
+  
+  
+  }
+
+
+
 .loginpage{
 display: flex;
 width: 50%;
@@ -115,6 +145,73 @@ padding: 20px;
 #mainpage{
   display: block;
 
+}
+.homedeal {
+  position: relative;
+}
+
+.imgdeal {
+  display: flex;
+  position: absolute;
+  top: -15px;
+  right: 44%;
+}
+
+.imgdeal img {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  padding: 5px;
+}
+
+.off1, .off2, .off3, .off4 {
+  animation: offer 7s linear infinite backwards;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.off1 {
+  animation-delay: 0s;
+}
+.off2 {
+  animation-delay: 2s;
+}
+.off3 {
+  animation-delay: 4s;
+}
+.off4 {
+  animation-delay: 6s;
+}
+
+@keyframes offer {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.10);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+
+
+
+.top-deals-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #9ca728;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 #cardpage{
   display: none;
