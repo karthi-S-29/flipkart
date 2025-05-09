@@ -1285,6 +1285,7 @@ let otperror=document.querySelector(".otperror")
 let login_side=document.querySelector(".login_side")
 let otp_side=document.querySelector(".otp_side")
 let verpage=document.querySelector(".verpage")
+let newusername=document.getElementById("newusername")
 
 let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 let mobilePattern = /^[6-9][0-9]{9}$/;
@@ -1306,6 +1307,7 @@ for (let val of users) {
     found = true;
     otperror.innerHTML = "";
     otpresend();
+    newusername.innerHTML=val.name
     login_side.style.display = "none";
     otp_side.style.display = "flex";
     verpage.innerHTML = `Please enter the OTP sent to ${inpemail_phone} <span style="color:blue; cursor:pointer;" onclick="login()">Change</span>`;
@@ -1345,6 +1347,7 @@ function signup(){
   let signupEmail=document.getElementById("signupEmail").value
   let signupPassword=document.getElementById("signupPassword").value
   let signupConfirmPassword=document.getElementById("signupConfirmPassword").value
+  
 
   if (signupName === ""|| signupEmail === "" || signupPassword === "" || signupConfirmPassword === "") {
     alert("please check all information")
@@ -1352,7 +1355,7 @@ function signup(){
      if(signupPassword===signupConfirmPassword){
 
       const newuser = {
-        name: signupName,
+        username: signupName,
         email_phone: signupEmail,
         password: signupConfirmPassword
       };
@@ -1360,8 +1363,29 @@ function signup(){
       users.push(newuser);
 
       alert("✅ signup success");
+
+      newusername.innerHTML=signupName
       
-      window.location.href = "./index.html";
+      // window.location.href = "./index.html";
+      // window.open("./index.html", "_self");
+
+      tv.innerHTML = "";
+    buypage.style.display = "none";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "block";
+  mainloginpage.style.display = "none";
+  cardpage.style.display = "none";
+  mainsignuppage.style.display = "none";
+
+
+
       console.log(users);
       
 
@@ -1376,7 +1400,7 @@ function signup(){
 
 
 }
-console.log(users);
+
 
 
 
@@ -1419,7 +1443,22 @@ function verify() {
     
   if (otp_verify==currentOtp) {
     alert("✅ Login success");
-    window.location.href = "./index.html";
+   tv.innerHTML = "";
+    buypage.style.display = "none";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "block";
+  mainloginpage.style.display = "none";
+  cardpage.style.display = "none";
+  mainsignuppage.style.display = "none";
+  login_side.style.display="flex"
+    otp_side.style.display="none" 
   }
    else {
     alert("❌ Invalid OTP");
@@ -1543,7 +1582,21 @@ if (buyname === "" || buyaddress === "" || buynumber === "") {
 
 } else{
   alert("✅ Your order was placed successfully!");
-  window.location.href = "./index.html";
+  // window.location.href = "./index.html";
+  tv.innerHTML = "";
+    buypage.style.display = "none";
+  Mobile.innerHTML = "";
+  findme.innerHTML = "";
+  Men.innerHTML = "";
+  Women.innerHTML = "";
+  Baby_Kids.innerHTML = "";
+  Home_Furniture.innerHTML = "";
+  Sports_Books_More.innerHTML = "";
+  comingsoon.innerHTML=""
+  mainpage.style.display = "block";
+  mainloginpage.style.display = "none";
+  cardpage.style.display = "none";
+  mainsignuppage.style.display = "none";
 }
 
   
